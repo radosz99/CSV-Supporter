@@ -1,0 +1,65 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+    -fx-background-color : rgba(10, 10, 10, .89);
+}
+
+.text-area *.text {
+    -fx-text-alignment: center;
+}
+
+#rowsAmountLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#columnsAmountLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#rowsAmountInfoLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#columnsAmountInfoLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#fileNameInfoLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#fileNameLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#separatorInfoLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#idColumnLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#idRowLbl {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+.button{
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color : rgba(35,35,35);
+    -fx-effect: dropshadow(gaussian, white  , 7.0, 0.3, 0.0, 0.0);
+    -fx-text-fill: rgba(255,240,229);
+    -fx-font-weight: bolder;
+}
+
+#column1{
+    -fx-font-family: monospace;
+    -fx-font-size: 12;
+    -fx-text-fill: rgba(35,35,35);
+    -fx-font-weight: bolder;
+}
+
+.text-field{
+    -fx-text-fill: blue;
+    -fx-effect: dropshadow(gaussian, lightslategray  , 10.0, 0.5, 0.0, 0.0);
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="700.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+   <children>
+      <TableView fx:id="tableView" layoutX="25.0" layoutY="13.0" prefHeight="677.0" prefWidth="222.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="275.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Button fx:id="loadDataBtn" layoutX="287.0" layoutY="113.0" mnemonicParsing="false" onAction="#loadData" prefHeight="49.0" prefWidth="175.0" />
+      <TextArea fx:id="allData" layoutX="513.0" layoutY="117.0" prefHeight="530.0" prefWidth="328.0" />
+      <Button fx:id="showDataBtn" layoutX="716.0" layoutY="26.0" mnemonicParsing="false" onAction="#showDataInTextArea" prefHeight="33.0" prefWidth="122.0" />
+      <TextField fx:id="textFieldSeparator" layoutX="399.0" layoutY="81.0" prefHeight="25.0" prefWidth="60.0" />
+      <TextField fx:id="columnId" layoutX="353.0" layoutY="205.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button fx:id="getColumnBtn" layoutX="302.0" layoutY="240.0" mnemonicParsing="false" onAction="#showByColumn" prefHeight="25.0" prefWidth="146.0" />
+      <Label fx:id="columnsAmountLbl" layoutX="627.0" layoutY="58.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="rowsAmountLbl" layoutX="627.0" layoutY="84.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="columnsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="514.0" layoutY="58.0" prefHeight="17.0" prefWidth="108.0" />
+      <Label fx:id="rowsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="84.0" prefHeight="17.0" prefWidth="110.0" />
+      <Button fx:id="hideDataBtn" layoutX="718.0" layoutY="75.0" mnemonicParsing="false" onAction="#hideDataInTextArea" prefHeight="33.0" prefWidth="122.0" />
+      <Label fx:id="separatorInfoLbl" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="84.0" prefHeight="17.0" prefWidth="104.0" />
+      <Label fx:id="idColumnLbl" alignment="CENTER_RIGHT" layoutX="314.0" layoutY="209.0" prefHeight="17.0" prefWidth="33.0" />
+      <TextField fx:id="rowId" layoutX="354.0" layoutY="292.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button fx:id="getRowBtn" layoutX="303.0" layoutY="327.0" mnemonicParsing="false" onAction="#showByRow" prefHeight="25.0" prefWidth="146.0" />
+      <Label fx:id="idRowLbl" alignment="CENTER_RIGHT" layoutX="315.0" layoutY="296.0" prefHeight="17.0" prefWidth="33.0" />
+      <Label fx:id="fileNameLbl" layoutX="627.0" layoutY="31.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="fileNameInfoLbl" alignment="CENTER_RIGHT" layoutX="514.0" layoutY="31.0" prefHeight="17.0" prefWidth="108.0" />
+   </children>
+</AnchorPane>

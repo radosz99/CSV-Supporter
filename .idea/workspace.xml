@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cf5461c-e0eb-4083-8d95-546746a49a84" name="Default Changelist" comment="">
+    <list default="true" id="9bc235d8-a598-4a21-9399-1cbada924508" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/classes/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Main.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplikacja.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/file.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/file.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Aplikacja.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +29,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -24,8 +45,8 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1ZarXg3Ad6qzkRddOANFN56NoOk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectId" id="1Zd1XHvOMKsN4w03FIAkq3IxdE5" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -34,19 +55,29 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/apartimo-backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Java_Techniki_Zaawansowane/cw2/javafx-sdk-11.0.2/lib" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15332031" />
     <property name="project.structure.side.proportion" value="0.6073903" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Radek\Desktop\6semestr\DPP\lab_3\lab3\src\main\resources\icons" />
+      <recent name="C:\Users\Radek\Desktop\6semestr\DPP\lab_3\lab3\src\main\resources" />
+      <recent name="C:\Users\Radek\Desktop\6semestr\DPP\lab_3\lab3\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Aplikacja" />
+      <module name="lab3" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Radek\Desktop\6semestr\Java_Techniki_Zaawansowane\cw2\javafx-sdk-11.0.2\lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -62,37 +93,69 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8cf5461c-e0eb-4083-8d95-546746a49a84" name="Default Changelist" comment="" />
-      <created>1585088086690</created>
+      <changelist id="9bc235d8-a598-4a21-9399-1cbada924508" name="Default Changelist" comment="" />
+      <created>1585154194923</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1585088086690</updated>
+      <updated>1585154194923</updated>
+      <workItem from="1585154196165" duration="17788000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="198" key="#Project_Structure" timestamp="1585145566083">
+    <state x="552" y="198" key="#Project_Structure" timestamp="1585154358710">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="198" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1585145566083" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1585145613773">
+    <state x="552" y="198" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1585154358710" />
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585155814200">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585145613773" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1585145613772">
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585155814200" />
+    <state x="765" y="249" key="#com.intellij.ide.util.MemberChooser" timestamp="1585166451174">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585145613772" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1585145613772">
+    <state x="765" y="249" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1585166451174" />
+    <state x="666" y="281" key="FileChooserDialogImpl" timestamp="1585154354666">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585145613772" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1585145613773">
+    <state x="666" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585154354666" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1585173788582">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585145613773" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585173788582" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1585173788582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585173788582" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1585173788582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585173788582" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1585173788582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585173788582" />
+    <state x="434" y="371" key="Maven.ArtifactSearchDialog" timestamp="1585154612819">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="434" y="371" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585154612819" />
+    <state x="440" y="114" key="SettingsEditor" timestamp="1585155416873">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="440" y="114" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585155416873" />
+    <state x="769" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585170160169">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="769" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1585170160169" />
+    <state x="616" y="192" width="670" height="676" key="search.everywhere.popup" timestamp="1585165069114">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="192" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585165069114" />
   </component>
 </project>

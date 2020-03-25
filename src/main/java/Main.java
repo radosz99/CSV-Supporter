@@ -1,20 +1,47 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-public class Main {
+import java.io.IOException;
+
+public class Main extends Application {
+
+    private static Stage stage;
+    private static FXMLLoader loader;
+
+    public static Stage getPrimaryStage() {
+        return stage;
+    }
+
+    public static FXMLLoader getLoader() {
+        return loader;
+    }
+
+
     public static void main(String[]args) throws IOException {
-        File csvFile = new File("C:\\Users\\Radek\\Desktop\\6semestr\\DPPTes\\file.csv");
-        ArrayList<ArrayList<String>> data = CSVHandler.parseCSV(csvFile,",");
-        ArrayList<Integer> columns = new ArrayList<>();
-        columns.add(0);
-        columns.add(2);
-        ArrayList<ArrayList<String>> data2 = CSVHandler.getByMultipleRow(columns,data);
-        ArrayList<String> tescik = CSVHandler.getByRow(3,data);
-        for(String s :tescik)
-            System.out.println(s);
-        CSVHandler csvHandler = new CSVHandler();
-        csvHandler.saveToCSV(data2, ";", "test.csv");
-        //CSVHandler.showCSV(data2);
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        try {
+            //ResourceBundle bundle = ResourceBundle.getBundle("resources.bundles");
+            loader = new FXMLLoader(this.getClass().getResource("Main.fxml"));
+            stage = primaryStage;
+            //loader.setResources(bundle);
+            Parent root = loader.load();
+            Scene scene = new Scene(root,890,700);
+            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            primaryStage.setResizable(false);
+            Image image = new Image("icons/icon.png");
+            primaryStage.getIcons().add(image);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
