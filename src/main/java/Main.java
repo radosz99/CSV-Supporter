@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[]args) throws IOException {
         File csvFile = new File("C:\\Users\\Radek\\Desktop\\6semestr\\DPPTes\\file.csv");
-        ArrayList<ArrayList<String>> data = CSVHandler.parseCSV(csvFile);
+        ArrayList<ArrayList<String>> data = CSVHandler.parseCSV(csvFile,",");
         ArrayList<Integer> columns = new ArrayList<>();
         columns.add(0);
         columns.add(2);
