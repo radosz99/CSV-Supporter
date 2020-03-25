@@ -52,6 +52,20 @@ public class CSVHandler {
         return result;
     }
 
+    public static ArrayList<ArrayList<String>> getByMultipleRowColumn (ArrayList<Integer> columnsId, ArrayList<Integer> rowsId, ArrayList<ArrayList<String>> data){
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        int counter=0;
+        for(Integer rowId : rowsId){
+            result.add(new ArrayList<>());
+            for(Integer columnId : columnsId){
+                result.get(counter).add(data.get(rowId).get(columnId));
+            }
+        }
+        return result;
+    }
+
+
+
     public static ArrayList<ArrayList<String>> parseCSV(File csvFile, String separator) throws IOException {
         ArrayList<ArrayList<String>> data = new ArrayList<>();
         String[] headers = null;
