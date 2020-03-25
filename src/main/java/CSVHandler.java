@@ -52,7 +52,7 @@ public class CSVHandler {
         return result;
     }
 
-    public static ArrayList<ArrayList<String>> parseCSV(File csvFile) throws IOException {
+    public static ArrayList<ArrayList<String>> parseCSV(File csvFile, String separator) throws IOException {
         ArrayList<ArrayList<String>> data = new ArrayList<>();
         String[] headers = null;
         String line;
@@ -61,7 +61,7 @@ public class CSVHandler {
         int rowCounter = 0;
         while (scanner.hasNextLine()){
             data.add(new ArrayList());
-            headers = scanner.nextLine().split(",");
+            headers = scanner.nextLine().split(separator);
             for(String s : headers) {
                 data.get(rowCounter).add(s);
             }
