@@ -60,6 +60,7 @@ public class CSVHandler {
             for(Integer columnId : columnsId){
                 result.get(counter).add(data.get(rowId).get(columnId));
             }
+            counter++;
         }
         return result;
     }
