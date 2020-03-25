@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9bc235d8-a598-4a21-9399-1cbada924508" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/classes/View.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/test.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplikacja.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/file.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Aplikacja.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-    </list>
+    <list default="true" id="9bc235d8-a598-4a21-9399-1cbada924508" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +42,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Java_Techniki_Zaawansowane/cw2/javafx-sdk-11.0.2/lib" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15332031" />
     <property name="project.structure.side.proportion" value="0.6073903" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
@@ -99,6 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585154194923</updated>
       <workItem from="1585154196165" duration="17788000" />
+      <workItem from="1585174995875" duration="52000" />
     </task>
     <servers />
   </component>
@@ -121,10 +103,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="765" y="249" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1585166451174" />
-    <state x="666" y="281" key="FileChooserDialogImpl" timestamp="1585154354666">
+    <state x="666" y="281" key="FileChooserDialogImpl" timestamp="1585175043449">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="666" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585154354666" />
+    <state x="666" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585175043449" />
     <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1585173788582">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -145,10 +127,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="434" y="371" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585154612819" />
-    <state x="440" y="114" key="SettingsEditor" timestamp="1585155416873">
+    <state x="440" y="114" key="SettingsEditor" timestamp="1585175047186">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="440" y="114" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585155416873" />
+    <state x="440" y="114" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585175047186" />
     <state x="769" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585170160169">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
