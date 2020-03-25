@@ -7,26 +7,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="700.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+<AnchorPane prefHeight="645.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="275.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Button fx:id="loadDataBtn" layoutX="287.0" layoutY="113.0" mnemonicParsing="false" onAction="#loadData" prefHeight="49.0" prefWidth="175.0" />
-      <TextArea fx:id="allData" layoutX="513.0" layoutY="117.0" prefHeight="530.0" prefWidth="328.0" />
-      <Button fx:id="showDataBtn" layoutX="716.0" layoutY="26.0" mnemonicParsing="false" onAction="#showDataInTextArea" prefHeight="33.0" prefWidth="122.0" />
-      <TextField fx:id="textFieldSeparator" layoutX="399.0" layoutY="81.0" prefHeight="25.0" prefWidth="60.0" />
-      <TextField fx:id="columnId" layoutX="353.0" layoutY="205.0" prefHeight="25.0" prefWidth="64.0" />
-      <Button fx:id="getColumnBtn" layoutX="302.0" layoutY="240.0" mnemonicParsing="false" onAction="#showByColumn" prefHeight="25.0" prefWidth="146.0" />
-      <Label fx:id="columnsAmountLbl" layoutX="627.0" layoutY="58.0" prefHeight="17.0" prefWidth="79.0" />
-      <Label fx:id="rowsAmountLbl" layoutX="627.0" layoutY="84.0" prefHeight="17.0" prefWidth="79.0" />
-      <Label fx:id="columnsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="514.0" layoutY="58.0" prefHeight="17.0" prefWidth="108.0" />
-      <Label fx:id="rowsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="84.0" prefHeight="17.0" prefWidth="110.0" />
-      <Button fx:id="hideDataBtn" layoutX="718.0" layoutY="75.0" mnemonicParsing="false" onAction="#hideDataInTextArea" prefHeight="33.0" prefWidth="122.0" />
-      <Label fx:id="separatorInfoLbl" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="84.0" prefHeight="17.0" prefWidth="104.0" />
-      <Label fx:id="idColumnLbl" alignment="CENTER_RIGHT" layoutX="314.0" layoutY="209.0" prefHeight="17.0" prefWidth="33.0" />
-      <TextField fx:id="rowId" layoutX="354.0" layoutY="292.0" prefHeight="25.0" prefWidth="64.0" />
-      <Button fx:id="getRowBtn" layoutX="303.0" layoutY="327.0" mnemonicParsing="false" onAction="#showByRow" prefHeight="25.0" prefWidth="146.0" />
-      <Label fx:id="idRowLbl" alignment="CENTER_RIGHT" layoutX="315.0" layoutY="296.0" prefHeight="17.0" prefWidth="33.0" />
-      <Label fx:id="fileNameLbl" layoutX="627.0" layoutY="31.0" prefHeight="17.0" prefWidth="79.0" />
-      <Label fx:id="fileNameInfoLbl" alignment="CENTER_RIGHT" layoutX="514.0" layoutY="31.0" prefHeight="17.0" prefWidth="108.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="131.0" layoutY="223.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="131.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+      <Button fx:id="loadDataBtn" layoutX="211.0" layoutY="163.0" mnemonicParsing="false" onAction="#loadData" prefHeight="33.0" prefWidth="169.0" />
+      <TextArea fx:id="allData" layoutX="516.0" layoutY="70.0" prefHeight="480.0" prefWidth="344.0" />
+      <Button fx:id="showDataBtn" layoutX="513.0" layoutY="26.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="169.0" />
+      <TextField fx:id="textFieldSeparator" layoutX="320.0" layoutY="126.0" prefHeight="25.0" prefWidth="60.0" />
+      <TextField fx:id="columnId" layoutX="320.0" layoutY="297.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button fx:id="filterBtn" layoutX="215.0" layoutY="372.0" mnemonicParsing="false" onAction="#filterData" prefHeight="33.0" prefWidth="169.0" />
+      <Label fx:id="columnsAmountLbl" layoutX="631.0" layoutY="585.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="rowsAmountLbl" layoutX="631.0" layoutY="611.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="columnsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="518.0" layoutY="585.0" prefHeight="17.0" prefWidth="108.0" />
+      <Label fx:id="rowsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="517.0" layoutY="611.0" prefHeight="17.0" prefWidth="110.0" />
+      <Button fx:id="hideDataBtn" layoutX="688.0" layoutY="26.0" mnemonicParsing="false" onAction="#hideDataInTextArea" prefHeight="33.0" prefWidth="169.0" />
+      <Label fx:id="separatorInfoLbl" alignment="CENTER_RIGHT" layoutX="210.0" layoutY="129.0" prefHeight="17.0" prefWidth="104.0" />
+      <Label fx:id="idColumnLbl" alignment="CENTER_RIGHT" layoutX="243.0" layoutY="301.0" prefHeight="17.0" prefWidth="71.0" />
+      <TextField fx:id="rowId" layoutX="320.0" layoutY="331.0" prefHeight="25.0" prefWidth="64.0" />
+      <Label fx:id="idRowLbl" alignment="CENTER_RIGHT" layoutX="243.0" layoutY="335.0" prefHeight="17.0" prefWidth="71.0" />
+      <Label fx:id="fileNameLbl" layoutX="631.0" layoutY="558.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="fileNameInfoLbl" alignment="CENTER_RIGHT" layoutX="518.0" layoutY="558.0" prefHeight="17.0" prefWidth="108.0" />
+      <Label fx:id="filtrLbl" alignment="CENTER" layoutX="131.0" layoutY="223.0" prefHeight="33.0" prefWidth="328.0" />
+      <Label fx:id="filtrInfoLbl" alignment="TOP_CENTER" layoutX="131.0" layoutY="257.0" prefHeight="17.0" prefWidth="328.0" />
+      <Label fx:id="loadLbl" alignment="CENTER" layoutX="130.0" layoutY="26.0" prefHeight="33.0" prefWidth="328.0" />
+      <Label fx:id="loadInfoLbl" alignment="TOP_CENTER" layoutX="130.0" layoutY="60.0" prefHeight="17.0" prefWidth="328.0" />
    </children>
 </AnchorPane>

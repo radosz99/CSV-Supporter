@@ -18,15 +18,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    @FXML private TableView tableView = new TableView();
     @FXML private Button loadDataBtn = new Button();
     @FXML private Button showDataBtn = new Button();
     @FXML private Button hideDataBtn = new Button();
-    @FXML private Button getRowBtn = new Button();
-    @FXML private Button getColumnBtn = new Button();
-    ObservableList<View> observableView = FXCollections.observableArrayList();
+    @FXML private Button filterBtn = new Button();
+    ArrayList<ArrayList<String>> filterData = new ArrayList<ArrayList<String>>();
     ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
-    ArrayList<String> view = new ArrayList<>();
     @FXML private TextArea allData = new TextArea();
     @FXML private TextField textFieldSeparator = new TextField();
     @FXML private TextField columnId = new TextField();
@@ -40,14 +37,23 @@ public class MainController implements Initializable {
     @FXML private Label idColumnLbl = new Label();
     @FXML private Label fileNameInfoLbl = new Label();
     @FXML private Label fileNameLbl = new Label();
-    @FXML private TableColumn<String, View> column1 = new TableColumn<>("Wartości");
+    @FXML private Label filtrLbl = new Label();
+    @FXML private Label filtrInfoLbl = new Label();
+    @FXML private Label loadLbl = new Label();
+    @FXML private Label loadInfoLbl = new Label();
     private String fileName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        column1.setCellValueFactory(new PropertyValueFactory<>("item"));
-        tableView.getColumns().add(column1);
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        showDataBtn.setOnAction(e->{
+            showDataInTextArea(data);
+        });
+
+        filterBtn.setOnAction(e->{
+            filterData();
+            System.out.println(filterData.size() + " " + filterData.get(0).size());
+            showDataInTextArea(filterData);
+        });
         setLabels();
     }
 
@@ -77,9 +83,9 @@ public class MainController implements Initializable {
         rowsAmountLbl.setText(Integer.toString(data.size()));
     }
 
-    public void showDataInTextArea(){
+    public void showDataInTextArea(ArrayList<ArrayList<String>> dataToShow){
         String allDataString = "";
-        for(ArrayList<String> row : data){
+        for(ArrayList<String> row : dataToShow){
             for(String column : row){
                 allDataString=allDataString+column + "\t";
             }
@@ -92,62 +98,33 @@ public class MainController implements Initializable {
         allData.setText("");
     }
 
-    public void showByColumn(){
-        view = null;
+    public void filterData(){
+        String[]rows;
+        String[]columns;
+        ArrayList<Integer> rowsToFind = new ArrayList<>();
+        ArrayList<Integer> columnsToFind = new ArrayList<>();
 
-        int parseColumn = 0;
         try {
-            parseColumn = Integer.parseInt(columnId.getText());
-        } catch (NumberFormatException e) {
-            badAlert("Wpisz poprawną wartość!");
-            return;
-        }
-        view = CSVHandler.getByColumn(parseColumn,data);
-        try {
-            if (view.isEmpty()) {
-                badAlert("Brak danych dla kolumny " + parseColumn);
-                return;
+            rows = rowId.getText().split(";");
+            columns = columnId.getText().split(";");
+            for(String s : rows){
+                rowsToFind.add(Integer.parseInt(s));
             }
-        }  catch (NullPointerException e) {
-            badAlert("Brak danych dla kolumny " + parseColumn);
+            for(String s : columns){
+                columnsToFind.add(Integer.parseInt(s));
+            }
+        } catch (NumberFormatException e) {
+            badAlert("Wpisz w poprawnym formacie!");
             return;
         }
-        tableView.getItems().clear();
-        for(String s : view) {
-            observableView.add(new View(s));
+        try {
+            filterData = CSVHandler.getByMultipleRowColumn(columnsToFind, rowsToFind, data);
+        }catch(IndexOutOfBoundsException e){
+            badAlert("Wpisz właściwy zakres!");
+            return;
         }
-
-        tableView.setItems(observableView);
-        column1.setText("Kolumna " + parseColumn);
     }
 
-    public void showByRow(){
-        view =  null;
-
-        int parseRow = 0;
-        try {
-            parseRow = Integer.parseInt(columnId.getText());
-        } catch (NumberFormatException e) {
-            badAlert("Wpisz poprawną wartość!");
-            return;
-         }
-        view = CSVHandler.getByRow(parseRow,data);
-        try {
-            if (view.isEmpty()) {
-                badAlert("Brak danych dla wiersza " + parseRow);
-                return;
-            }
-        } catch (NullPointerException e){
-            badAlert("Brak danych dla wiersza " + parseRow);
-            return;
-        }
-        tableView.getItems().clear();
-        for(String s : view) {
-            observableView.add(new View(s));
-        }
-        tableView.setItems(observableView);
-        column1.setText("Wiersz " + parseRow);
-    }
 
     public boolean checkIfCSV(File file){
         String[] parts;
@@ -164,16 +141,19 @@ public class MainController implements Initializable {
 
     private void setLabels(){
         loadDataBtn.setText("Wczytaj plik CSV");
-        showDataBtn.setText("Pokaż dane");
+        showDataBtn.setText("Pokaż wczytany plik");
         hideDataBtn.setText("Ukryj dane");
-        getColumnBtn.setText("Pokaż kolumnę");
-        getRowBtn.setText("Pokaż wiersz");
+        filterBtn.setText("Filtruj!");
         rowsAmountInfoLbl.setText("Liczba wierszy: ");
         columnsAmountInfoLbl.setText("Liczba kolumn: ");
         separatorInfoLbl.setText("Separator: ");
         fileNameInfoLbl.setText("Nazwa pliku: ");
-        idRowLbl.setText("Id: ");
-        idColumnLbl.setText("Id: ");
+        idRowLbl.setText("Id wierszy: ");
+        idColumnLbl.setText("Id kolumn: ");
+        filtrLbl.setText("Filtrowanie kolumn i wierszy");
+        filtrInfoLbl.setText("Wpisz id separując znakiem ;");
+        loadLbl.setText("Wczytywanie pliku CSV");
+        loadInfoLbl.setText("Wybierz plik wpisując uprzednio separator");
     }
 
     /**
