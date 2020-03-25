@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cf5461c-e0eb-4083-8d95-546746a49a84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/file.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSVHandler.java" afterDir="false" />
-    </list>
+    <list default="true" id="8cf5461c-e0eb-4083-8d95-546746a49a84" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +102,7 @@
       <updated>1585088086690</updated>
       <workItem from="1585088087917" duration="310000" />
       <workItem from="1585131107410" duration="4566000" />
-      <workItem from="1585141950284" duration="2719000" />
+      <workItem from="1585141950284" duration="2841000" />
     </task>
     <servers />
   </component>
