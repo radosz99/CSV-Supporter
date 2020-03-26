@@ -7,6 +7,12 @@
     -fx-text-alignment: center;
 }
 
+#allData{
+    -fx-background-color : rgba(35,35,35);
+    -fx-effect: dropshadow(gaussian, lightslategray  , 10.0, 0.5, 0.0, 0.0);
+}
+
+
 #filtrLbl {
     -fx-font-size: 18;
     -fx-text-fill: rgba(255,240,229);
@@ -22,6 +28,19 @@
     -fx-text-fill: rgba(255,240,229);
 }
 #filtrInfoLbl {
+    -fx-font-size: 10;
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#addFileInfoLbl{
+    -fx-font-size: 10;
+    -fx-text-fill: rgba(255,240,229);
+}
+#concatLbl {
+    -fx-font-size: 18;
+    -fx-text-fill: rgba(255,240,229);
+}
+#concatInfoLbl {
     -fx-font-size: 10;
     -fx-text-fill: rgba(255,240,229);
 }

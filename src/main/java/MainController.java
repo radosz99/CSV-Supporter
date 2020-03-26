@@ -1,4 +1,5 @@
 import classes.View;
+
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,10 +23,17 @@ public class MainController implements Initializable {
     @FXML private Button showDataBtn = new Button();
     @FXML private Button hideDataBtn = new Button();
     @FXML private Button filterBtn = new Button();
+    @FXML private Button saveFilterDataBtn = new Button();
+    @FXML private Button saveFilesBtn = new Button();
+    @FXML private Button addFileBtn = new Button();
+    @FXML private Button resetBtn = new Button();
+    ArrayList<ArrayList<String>> dataFromFileConcatenation = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList<String>> dataForConcatenation = new ArrayList<ArrayList<String>>();
     ArrayList<ArrayList<String>> filterData = new ArrayList<ArrayList<String>>();
-    ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList<String>> dataFromCSVFile = new ArrayList<ArrayList<String>>();
     @FXML private TextArea allData = new TextArea();
     @FXML private TextField textFieldSeparator = new TextField();
+    @FXML private TextField textFieldSeparator2 = new TextField();
     @FXML private TextField columnId = new TextField();
     @FXML private TextField rowId = new TextField();
     @FXML private Label rowsAmountLbl = new Label();
@@ -33,6 +41,7 @@ public class MainController implements Initializable {
     @FXML private Label rowsAmountInfoLbl = new Label();
     @FXML private Label columnsAmountInfoLbl = new Label();
     @FXML private Label separatorInfoLbl = new Label();
+    @FXML private Label separatorInfoLbl2 = new Label();
     @FXML private Label idRowLbl = new Label();
     @FXML private Label idColumnLbl = new Label();
     @FXML private Label fileNameInfoLbl = new Label();
@@ -41,46 +50,77 @@ public class MainController implements Initializable {
     @FXML private Label filtrInfoLbl = new Label();
     @FXML private Label loadLbl = new Label();
     @FXML private Label loadInfoLbl = new Label();
+    @FXML private Label concatLbl = new Label();
+    @FXML private Label concatInfoLbl = new Label();
+    @FXML private Label addFileInfoLbl = new Label();
+    @FXML private Label allLbl = new Label();
+    @FXML private CheckBox columnCheckbox = new CheckBox();
+    @FXML private CheckBox rowCheckbox = new CheckBox();
+
     private String fileName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        allData.setEditable(false);
+        Main.getPrimaryStage().setTitle("Obsługa plików CSV");
         showDataBtn.setOnAction(e->{
-            showDataInTextArea(data);
+            showDataInTextArea(dataFromCSVFile);
+            //dataForConcatenation
+        });
+        loadDataBtn.setOnAction(e->{
+            try {
+                loadData();
+            } catch (NullPointerException | IOException ex) {
+                return;
+            }
         });
 
         filterBtn.setOnAction(e->{
             filterData();
-            System.out.println(filterData.size() + " " + filterData.get(0).size());
             showDataInTextArea(filterData);
+        });
+
+        addFileBtn.setOnAction(e->{
+            try {
+                concateFiles();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
         setLabels();
     }
 
-    public void loadData() throws IOException {
+    public ArrayList<ArrayList<String>> getDataFromFile(ArrayList<ArrayList<String>> dataFromFile, String separator) throws IOException {
         FileChooser choose = new FileChooser();
         File selectedFile = choose.showOpenDialog(null);
-        if(selectedFile==null) {return;}
+        if(selectedFile==null) {return null;}
         if(checkIfCSV(selectedFile)){
-            if(textFieldSeparator.getText().equals("")){
-                badAlert("Wpisz separator!");
-                return;
-            }
-            else {
-                data = CSVHandler.parseCSV(selectedFile, textFieldSeparator.getText());
-                goodAlert("Wczytanie pliku powiodło się!");
-            }
+            dataFromFile = CSVHandler.parseCSV(selectedFile, separator);
+            goodAlert("Wczytanie pliku powiodło się!");
         }
         else{
             badAlert("Wybierz plik CSV!");
+            return null;
+        }
+        return dataFromFile;
+
+    }
+
+    public void resetConcatenation(){
+        dataFromFileConcatenation.clear();
+    }
+    public void loadData() throws IOException {
+        if(textFieldSeparator.getText().equals("")){
+            badAlert("Wpisz separator!");
             return;
         }
+        dataFromCSVFile = getDataFromFile(dataFromCSVFile,textFieldSeparator.getText());
 
-        if(data.get(0).size()==1){
-            warningAlert("Jedna kolumna danych czy zły separator? (sprawdź klikając na Pokaż dane)");
+        if(dataFromCSVFile.get(0).size()==1){
+            warningAlert("Jedna kolumna danych czy zły separator? (sprawdź naciskając na Pokaż dane)");
         }
-        columnsAmountLbl.setText(Integer.toString(data.get(0).size()));
-        rowsAmountLbl.setText(Integer.toString(data.size()));
+        columnsAmountLbl.setText(Integer.toString(dataFromCSVFile.get(0).size()));
+        rowsAmountLbl.setText(Integer.toString(dataFromCSVFile.size()));
     }
 
     public void showDataInTextArea(ArrayList<ArrayList<String>> dataToShow){
@@ -98,33 +138,78 @@ public class MainController implements Initializable {
         allData.setText("");
     }
 
+    public void saveFilterData(){
+        // TODO: handle saveFilterData Button - add a body to method
+    }
+
     public void filterData(){
         String[]rows;
         String[]columns;
         ArrayList<Integer> rowsToFind = new ArrayList<>();
         ArrayList<Integer> columnsToFind = new ArrayList<>();
 
-        try {
-            rows = rowId.getText().split(";");
-            columns = columnId.getText().split(";");
-            for(String s : rows){
-                rowsToFind.add(Integer.parseInt(s));
+        if(!columnCheckbox.isSelected()) {
+            try {
+                columns = columnId.getText().split(";");
+                for (String s : columns) {
+                    columnsToFind.add(Integer.parseInt(s));
+                }
+            } catch (NumberFormatException e) {
+                badAlert("Wpisz w poprawnym formacie!");
+                return;
             }
-            for(String s : columns){
-                columnsToFind.add(Integer.parseInt(s));
-            }
-        } catch (NumberFormatException e) {
-            badAlert("Wpisz w poprawnym formacie!");
-            return;
         }
+
+        if(!rowCheckbox.isSelected()) {
+            try {
+                rows = rowId.getText().split(";");
+                for (String s : rows) {
+                    rowsToFind.add(Integer.parseInt(s));
+                }
+            } catch (NumberFormatException e) {
+                badAlert("Wpisz w poprawnym formacie!");
+                return;
+            }
+        }
+
+        if(!columnCheckbox.isSelected() && !rowCheckbox.isSelected())
+            filterForMultiple(columnsToFind,rowsToFind);
+        else if (columnCheckbox.isSelected()&& rowCheckbox.isSelected()){
+            filterData = dataFromCSVFile;
+        }
+        else if(columnCheckbox.isSelected()){
+            filterData = CSVHandler.getByMultipleRow(rowsToFind,dataFromCSVFile);
+        }
+        else if(rowCheckbox.isSelected()){
+            filterData = CSVHandler.getByMultipleColumn(columnsToFind,dataFromCSVFile);
+        }
+    }
+
+    public void filterForMultiple(ArrayList<Integer> columnsToFind,  ArrayList<Integer> rowsToFind){
+
         try {
-            filterData = CSVHandler.getByMultipleRowColumn(columnsToFind, rowsToFind, data);
+            filterData = CSVHandler.getByMultipleRowColumn(columnsToFind, rowsToFind, dataFromCSVFile);
         }catch(IndexOutOfBoundsException e){
             badAlert("Wpisz właściwy zakres!");
             return;
         }
     }
+    public void saveFiles() throws FileNotFoundException {
+        CSVHandler csvHandler = new CSVHandler();
+        csvHandler.saveToCSV(dataFromFileConcatenation,";","C:\\Users\\Radek\\Desktop\\6semestr\\DPP\\lab_3\\lab3\\src\\main\\resources\\icons\\output.csv");
+        dataFromFileConcatenation.clear();
+    }
 
+    public void concateFiles() throws IOException {
+        if(textFieldSeparator2.getText().equals("")){
+            badAlert("Wpisz separator!");
+            return;
+        }
+        dataForConcatenation=null;
+        dataForConcatenation = getDataFromFile(dataForConcatenation,textFieldSeparator2.getText());
+        if(dataForConcatenation!=null)
+            CSVHandler.concatenateCSV(dataFromFileConcatenation,dataForConcatenation);
+    }
 
     public boolean checkIfCSV(File file){
         String[] parts;
@@ -147,6 +232,7 @@ public class MainController implements Initializable {
         rowsAmountInfoLbl.setText("Liczba wierszy: ");
         columnsAmountInfoLbl.setText("Liczba kolumn: ");
         separatorInfoLbl.setText("Separator: ");
+        separatorInfoLbl2.setText("Separator: ");
         fileNameInfoLbl.setText("Nazwa pliku: ");
         idRowLbl.setText("Id wierszy: ");
         idColumnLbl.setText("Id kolumn: ");
@@ -154,6 +240,14 @@ public class MainController implements Initializable {
         filtrInfoLbl.setText("Wpisz id separując znakiem ;");
         loadLbl.setText("Wczytywanie pliku CSV");
         loadInfoLbl.setText("Wybierz plik wpisując uprzednio separator");
+        saveFilterDataBtn.setText("Zapisz do pliku CSV");
+        saveFilesBtn.setText("Zapisz do pliku CSV");
+        concatLbl.setText("Konkatenacja plików CSV");
+        concatInfoLbl.setText("Łączenie plików w jeden wynikowy");
+        addFileInfoLbl.setText("<-- dodaj");
+        addFileBtn.setText("Dodaj");
+        resetBtn.setText("Resetuj");
+        allLbl.setText("Wszystkie?");
     }
 
     /**
