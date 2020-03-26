@@ -18,6 +18,7 @@ _________________________________
 Program made for university course *Good programming practices*.
 Branches:
 
+* *master* - basically nothing, only README with the exercise description,
 * *biblioteka* - source code,
 * *maven* - maven repository for source code from *biblioteka*,
 * *aplikacj* - desktop application using *maven* branch.
