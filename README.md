@@ -1,15 +1,12 @@
-**<p align="center"> Programming in Java - advanced techniques </p>**
+**<p align="center"> Good programming practices </p>**
 _________________________________
 **<p align="center"> Wrocław University of Science and Technology </p>**
 **<p align="center"> Computer Science, Faculty of Electronics, 6 semester </p>**
-<p align="center"> Radosław Lis, 241385 </p>
+**<p align="center"> Radosław Lis, 241385 </p>**
 
 # Table of Contents
 - [General info](#desc)
 - [Prerequisites](#pre)
-- [Info about programs](#inf)
-  *  [cw1](#cw1)
-  *  [cw2](#cw2)
 - [Configurations](#conf)
   *  [JavaFX](#jav)
   *  [Scene Builder](#scene)
@@ -17,38 +14,21 @@ _________________________________
   *  [Common errors](#err)
 
 <a name="desc"></a>
+
 # General info
-Programs made for university course *Programming in Java - advanced techniques*.
-______________________________
-cw1 - Sorting algorithms,  
-cw2 - Desktop sorting application using sorting methods from cw1.
-
-<a name="pre"></a>
-# Prerequisites
-- [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) 
-- IDE for Java (e.g. [Eclipse](https://www.eclipse.org/downloads/))
- 
- <a name="inf"></a>
-# Info about programs
-
- <a name="cw1"></a>
-## cw1
-
+Program made for university course *Good programming practices*.
 <a name="tech1"></a>
 ### Technologies 
-- [JavaFX (SDK 11.0.2)](https://gluonhq.com/products/javafx/)
-
- <a name="cw2"></a>
-## cw2
-
-<a name="tech2"></a>
-### Technologies 
-- [JavaFX (SDK 11.0.2)](https://gluonhq.com/products/javafx/)
 
 ### Running
 
 ### Description
 <img src="https://i.imgur.com/zkRc4Yy.png" width="555" height="456" />
+
+<a name="pre"></a>
+# Prerequisites
+- [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) 
+- [Eclipse](https://www.eclipse.org/downloads/)
 
 # Configurations
 
