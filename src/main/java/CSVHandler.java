@@ -38,15 +38,21 @@ public class CSVHandler {
 
     public static  ArrayList<ArrayList<String>> getByMultipleColumn (ArrayList<Integer> columnsId, ArrayList<ArrayList<String>> data){
         ArrayList<ArrayList<String>> result = new ArrayList<>();
-        for(Integer columnId : columnsId) {
+//        for(Integer columnId : columnsId) {
+//            result.add(new ArrayList<>());
+//            for(ArrayList<String> row : data) {
+//                if (columnId >= row.size()) {
+//                    return null;
+//                }
+//                else {
+//                    result.get(result.size() - 1).add(row.get(columnId));
+//                }
+//            }
+//        }
+        for(int i=0; i<data.size();i++){
             result.add(new ArrayList<>());
-            for(ArrayList<String> row : data) {
-                if (columnId >= row.size()) {
-                    return null;
-                }
-                else {
-                    result.get(result.size() - 1).add(row.get(columnId));
-                }
+            for (Integer col : columnsId) {
+                result.get(i).add(data.get(i).get(col));
             }
         }
         return result;
