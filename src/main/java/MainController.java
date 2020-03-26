@@ -1,5 +1,9 @@
+import classes.LocalizedBinding;
 import classes.View;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,26 +11,34 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     @FXML private Button loadDataBtn = new Button();
     @FXML private Button showDataBtn = new Button();
-    @FXML private Button hideDataBtn = new Button();
+    @FXML private Label saveFilterDataInfo = new Label();
     @FXML private Button filterBtn = new Button();
     @FXML private Button saveFilterDataBtn = new Button();
     @FXML private Button saveFilesBtn = new Button();
     @FXML private Button addFileBtn = new Button();
     @FXML private Button resetBtn = new Button();
+    @FXML private ImageView imageviewFlag;
     ArrayList<ArrayList<String>> dataFromFileConcatenation = new ArrayList<ArrayList<String>>();
     ArrayList<ArrayList<String>> dataForConcatenation = new ArrayList<ArrayList<String>>();
     ArrayList<ArrayList<String>> filterData = new ArrayList<ArrayList<String>>();
@@ -34,18 +46,22 @@ public class MainController implements Initializable {
     @FXML private TextArea allData = new TextArea();
     @FXML private TextField textFieldSeparator = new TextField();
     @FXML private TextField textFieldSeparator2 = new TextField();
+    @FXML private TextField textFieldSeparator3 = new TextField();
     @FXML private TextField columnId = new TextField();
     @FXML private TextField rowId = new TextField();
+    @FXML private ComboBox <Locale> lang;
     @FXML private Label rowsAmountLbl = new Label();
     @FXML private Label columnsAmountLbl = new Label();
     @FXML private Label rowsAmountInfoLbl = new Label();
     @FXML private Label columnsAmountInfoLbl = new Label();
     @FXML private Label separatorInfoLbl = new Label();
     @FXML private Label separatorInfoLbl2 = new Label();
+    @FXML private Label separatorInfoLbl3 = new Label();
     @FXML private Label idRowLbl = new Label();
     @FXML private Label idColumnLbl = new Label();
     @FXML private Label fileNameInfoLbl = new Label();
     @FXML private Label fileNameLbl = new Label();
+    @FXML private Label countryLbl = new Label();
     @FXML private Label filtrLbl = new Label();
     @FXML private Label filtrInfoLbl = new Label();
     @FXML private Label loadLbl = new Label();
@@ -54,18 +70,41 @@ public class MainController implements Initializable {
     @FXML private Label concatInfoLbl = new Label();
     @FXML private Label addFileInfoLbl = new Label();
     @FXML private Label allLbl = new Label();
+    @FXML private Label timeLbl = new Label();
     @FXML private CheckBox columnCheckbox = new CheckBox();
     @FXML private CheckBox rowCheckbox = new CheckBox();
-
-    private String fileName;
+    public LocalizedBinding localizedBinding;
+    public ResourceBundle sources;
+    Timeline clock = new Timeline();
+    private int filesToConcat;
+    private String fileName="";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lang.getItems().addAll(new Locale("pl","PL"),
+                new Locale("en","US"),
+                new Locale("en","GB"));
+
+        lang.setCellFactory(lv -> {
+            return createListCell();
+        });
+        lang.setButtonCell(createListCell());
+        lang.getSelectionModel().select(Locale.getDefault());
+        lang.setOnAction(lv -> {
+            updateDateAndFlag();
+        });
+        setCellFactory();
+        updateDateAndFlag();
+
         allData.setEditable(false);
         Main.getPrimaryStage().setTitle("Obsługa plików CSV");
         showDataBtn.setOnAction(e->{
-            showDataInTextArea(dataFromCSVFile);
-            //dataForConcatenation
+            if(fileName!="") {
+                showDataInTextArea(dataFromCSVFile);
+            }
+            else{
+                warningAlert("Nie został wczytany żaden plik");
+            }
         });
         loadDataBtn.setOnAction(e->{
             try {
@@ -77,7 +116,6 @@ public class MainController implements Initializable {
 
         filterBtn.setOnAction(e->{
             filterData();
-            showDataInTextArea(filterData);
         });
 
         addFileBtn.setOnAction(e->{
@@ -90,10 +128,59 @@ public class MainController implements Initializable {
         setLabels();
     }
 
+    private ListCell<Locale> createListCell() {
+        return new ListCell<Locale>() {
+            @Override
+            public void updateItem(Locale locale, boolean empty) {
+                super.updateItem(locale, empty);
+                if (empty) {
+                    setText("");
+                } else {
+                    setText(locale.getDisplayCountry(locale));
+                }
+            }
+        };
+    }
+
+    public void setCellFactory(){
+        lang.setCellFactory(new Callback<ListView<Locale>, ListCell<Locale>>() {
+            @Override
+            public ListCell<Locale> call(ListView<Locale> p) {
+                return new ListCell<Locale>() {
+                    @Override
+                    protected void updateItem(Locale item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setText("");
+                        } else {
+                            setText(item.getDisplayCountry(item));
+                        }
+                        if (item == null || empty) {
+                            setGraphic(null);
+                        } else {
+                            Image icon = null;
+                            try {
+                                icon = new Image(new File("C:\\Users\\Radek\\Desktop\\6semestr\\DPP\\lab_3\\lab3\\src\\main\\resources\\icons\\"+item.getCountry().toString()+".png").toURI().toString());
+                            } catch(NullPointerException ex) {
+                                System.out.println("brak ikony");
+                            }
+                            ImageView iconImageView = new ImageView(icon);
+                            iconImageView.setFitHeight(10);
+                            iconImageView.setPreserveRatio(true);
+                            setGraphic(iconImageView);
+                        }
+                    }
+                };
+            }
+        });
+    }
+
     public ArrayList<ArrayList<String>> getDataFromFile(ArrayList<ArrayList<String>> dataFromFile, String separator) throws IOException {
         FileChooser choose = new FileChooser();
         File selectedFile = choose.showOpenDialog(null);
-        if(selectedFile==null) {return null;}
+        if(selectedFile==null) {
+            return dataFromFile;
+        }
         if(checkIfCSV(selectedFile)){
             dataFromFile = CSVHandler.parseCSV(selectedFile, separator);
             goodAlert("Wczytanie pliku powiodło się!");
@@ -107,7 +194,10 @@ public class MainController implements Initializable {
     }
 
     public void resetConcatenation(){
+        warningAlert("Zresetowano " + filesToConcat + " plików.");
         dataFromFileConcatenation.clear();
+        filesToConcat=0;
+
     }
     public void loadData() throws IOException {
         if(textFieldSeparator.getText().equals("")){
@@ -117,7 +207,7 @@ public class MainController implements Initializable {
         dataFromCSVFile = getDataFromFile(dataFromCSVFile,textFieldSeparator.getText());
 
         if(dataFromCSVFile.get(0).size()==1){
-            warningAlert("Jedna kolumna danych czy zły separator? (sprawdź naciskając na Pokaż dane)");
+            warningAlert("Jedna kolumna danych czy zły separator? (sprawdź naciskając na Pokaż wczytany plik)");
         }
         columnsAmountLbl.setText(Integer.toString(dataFromCSVFile.get(0).size()));
         rowsAmountLbl.setText(Integer.toString(dataFromCSVFile.size()));
@@ -138,8 +228,19 @@ public class MainController implements Initializable {
         allData.setText("");
     }
 
-    public void saveFilterData(){
-        // TODO: handle saveFilterData Button - add a body to method
+    public void saveFilterData() throws FileNotFoundException {
+        if(!filterData.isEmpty()) {
+            CSVHandler csvHandler = new CSVHandler();
+            FileChooser fx = new FileChooser();
+            File file = fx.showSaveDialog(Main.getPrimaryStage());
+            if(file!=null) {
+                csvHandler.saveToCSV(filterData, textFieldSeparator3.getText(), file.getPath());
+                goodAlert("Zapisano do pliku " + file.getName());
+            }
+        }
+        else{
+            warningAlert("Nie ma nic do zapisania!");
+        }
     }
 
     public void filterData(){
@@ -176,10 +277,12 @@ public class MainController implements Initializable {
             filterForMultiple(columnsToFind,rowsToFind);
         else if (columnCheckbox.isSelected()&& rowCheckbox.isSelected()){
             filterData = dataFromCSVFile;
+            showDataInTextArea(filterData);
         }
         else if(columnCheckbox.isSelected()){
             try {
-            filterData = CSVHandler.getByMultipleRow(rowsToFind,dataFromCSVFile);
+                filterData = CSVHandler.getByMultipleRow(rowsToFind,dataFromCSVFile);
+                showDataInTextArea(filterData);
             }catch(IndexOutOfBoundsException e){
                 badAlert("Wpisz właściwy zakres!");
                 return;
@@ -187,7 +290,8 @@ public class MainController implements Initializable {
         }
         else if(rowCheckbox.isSelected()){
             try {
-            filterData = CSVHandler.getByMultipleColumn(columnsToFind,dataFromCSVFile);
+                filterData = CSVHandler.getByMultipleColumn(columnsToFind,dataFromCSVFile);
+                showDataInTextArea(filterData);
             }catch(IndexOutOfBoundsException e){
                 badAlert("Wpisz właściwy zakres!");
                 return;
@@ -199,18 +303,27 @@ public class MainController implements Initializable {
 
         try {
             filterData = CSVHandler.getByMultipleRowColumn(columnsToFind, rowsToFind, dataFromCSVFile);
+            showDataInTextArea(filterData);
         }catch(IndexOutOfBoundsException e){
             badAlert("Wpisz właściwy zakres!");
             return;
         }
     }
     public void saveFiles() throws FileNotFoundException {
-        CSVHandler csvHandler = new CSVHandler();
-        FileChooser fx = new FileChooser();
-        File file = fx.showSaveDialog(Main.getPrimaryStage());
-        csvHandler.saveToCSV(dataFromFileConcatenation,";",file.getPath());
-        goodAlert("Zapisano do pliku " + file.getName());
-        dataFromFileConcatenation.clear();
+        if(filesToConcat!=0) {
+            CSVHandler csvHandler = new CSVHandler();
+            FileChooser fx = new FileChooser();
+            File file = fx.showSaveDialog(Main.getPrimaryStage());
+            if(file!=null) {
+                csvHandler.saveToCSV(dataFromFileConcatenation, textFieldSeparator2.getText(), file.getPath());
+                goodAlert("Zapisano " + filesToConcat + " plików do pliku " + file.getName());
+                dataFromFileConcatenation.clear();
+                filesToConcat = 0;
+            }
+        }
+        else{
+            warningAlert("Dodaj najpierw jakieś pliki!");
+        }
     }
 
     public void concateFiles() throws IOException {
@@ -220,8 +333,11 @@ public class MainController implements Initializable {
         }
         dataForConcatenation=null;
         dataForConcatenation = getDataFromFile(dataForConcatenation,textFieldSeparator2.getText());
-        if(dataForConcatenation!=null)
-            CSVHandler.concatenateCSV(dataFromFileConcatenation,dataForConcatenation);
+        if(dataForConcatenation!=null) {
+            CSVHandler.concatenateCSV(dataFromFileConcatenation, dataForConcatenation);
+            filesToConcat++;
+        }
+
     }
 
     public boolean checkIfCSV(File file){
@@ -233,6 +349,7 @@ public class MainController implements Initializable {
         if(!parts[parts.length-1].contentEquals("csv")) {
             return false;
         }
+        fileName = file.getName();
         fileNameLbl.setText(file.getName());
         return true;
     }
@@ -240,12 +357,13 @@ public class MainController implements Initializable {
     private void setLabels(){
         loadDataBtn.setText("Wczytaj plik CSV");
         showDataBtn.setText("Pokaż wczytany plik");
-        hideDataBtn.setText("Ukryj dane");
+        saveFilterDataInfo.setText("Zapisz przefiltrowane dane");
         filterBtn.setText("Filtruj!");
         rowsAmountInfoLbl.setText("Liczba wierszy: ");
         columnsAmountInfoLbl.setText("Liczba kolumn: ");
         separatorInfoLbl.setText("Separator: ");
         separatorInfoLbl2.setText("Separator: ");
+        separatorInfoLbl3.setText("Separator: ");
         fileNameInfoLbl.setText("Nazwa pliku: ");
         idRowLbl.setText("Id wierszy: ");
         idColumnLbl.setText("Id kolumn: ");
@@ -261,6 +379,7 @@ public class MainController implements Initializable {
         addFileBtn.setText("Dodaj");
         resetBtn.setText("Resetuj");
         allLbl.setText("Wszystkie?");
+        countryLbl.setText("Kraj:");
     }
 
     /**
@@ -296,5 +415,19 @@ public class MainController implements Initializable {
         alert.showAndWait();
     }
 
+    public void updateDateAndFlag() {
+        Locale.setDefault(lang.getSelectionModel().getSelectedItem());
+        DateTimeFormatter localeFormat = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+        clock.stop();
+        clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            timeLbl.setText(LocalDateTime.now().format(localeFormat));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+        Image i = new Image(new File("C:\\Users\\Radek\\Desktop\\6semestr\\DPP\\lab_3\\lab3\\src\\main\\resources\\icons\\"+Locale.getDefault().getCountry().toString()+ ".png").toURI().toString());
+        imageviewFlag.setImage(i);
+
+
+    }
 
 }

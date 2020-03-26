@@ -40,6 +40,11 @@
     -fx-font-size: 18;
     -fx-text-fill: rgba(255,240,229);
 }
+
+#saveFilterDataInfo{
+    -fx-font-size: 18;
+    -fx-text-fill: rgba(255,240,229);
+}
 #concatInfoLbl {
     -fx-font-size: 10;
     -fx-text-fill: rgba(255,240,229);
