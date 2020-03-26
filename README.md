@@ -41,7 +41,15 @@ Program gives 4 main functionalities:
 3.  Concatenation of any number of CSV files in one with custom name.
 4.  Saving filtered data to file.
 
-<img src="https://i.imgur.com/zkRc4Yy.png" width="555" height="456" />
+<img src="https://i.imgur.com/fd6B84I.png" width="590" height="486" />
+
+Program - by using Resource Bundles - have got also other language version, such as American:
+
+<img src="https://i.imgur.com/Qi79wPk.png"  />
+<img src="https://i.imgur.com/SP5lJPp.png" width="590" height="486" />
+
+By using Choice Format class program supports the right declension of words in all language versions:
+<img src="https://i.imgur.com/CQcuFsh.png" />
 
 <a name="pre"></a>
 # Prerequisites
