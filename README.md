@@ -23,6 +23,8 @@ Branches:
 * *maven* - maven repository for source code from *biblioteka*,
 * *aplikacj* - desktop application using *maven* branch.
 
+Proposed assessment - 5.0
+
 <a name="tech1"></a>
 ### Technologies 
 * JavaFX,
