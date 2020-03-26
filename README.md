@@ -10,19 +10,34 @@ _________________________________
 - [Configurations](#conf)
   *  [JavaFX](#jav)
   *  [Scene Builder](#scene)
-  *  [UTF-8 Encoding](#utf)
   *  [Common errors](#err)
 
 <a name="desc"></a>
 
 # General info
 Program made for university course *Good programming practices*.
+Branches:
+
+* *biblioteka* - source code,
+* *maven* - maven repository for source code from *biblioteka*,
+* *aplikacj* - desktop application using *maven* branch.
+
 <a name="tech1"></a>
 ### Technologies 
+* JavaFX,
+* IntellJ IDEA 2019 3.4,
+* Scene Builder,
+* Maven.
 
 ### Running
 Checkout on *aplikacj* branch and run *Main.java*
 ### Description
+Program gives 4 main functionalities:
+1.  Loading CSV files and display data from them on the text area.
+2.  Filtration data from loaded CSV by columns and rows id.
+3.  Concatenation of any number of CSV files in one with custom name.
+4.  Saving filtered data to file.
+
 <img src="https://i.imgur.com/zkRc4Yy.png" width="555" height="456" />
 
 <a name="pre"></a>
@@ -47,12 +62,7 @@ ___________________________________
 <a name="scene"></a>
 ## Scene Builder
 1. Go to [**Gluon** site](https://gluonhq.com/products/scene-builder/#download) and in section **Download Scene Builder for Java 11** download version for your OS.
-2. Go **Window** -> **Preferences** -> **JavaFX** and in *SceneBuilder executable* field click browse and find your .exe file (*...\SceneBuilder\SceneBuilder.exe*) and in *JavaFX 11+ SDK* field click browse and find your sdk folder (*...\javafx-sdk-11.0.2*)
-___________________________________
-<a name="utf"></a>
-## UTF-8 Encoding
-1. Go **Window** -> **Preferences** -> **General** -> **Workspace** -> and in *Text file encoding* field choose **Other** -> **UTF-8**.
-
+2. Go **Window** -> **Preferences** -> **JavaFX** and in *SceneBuilder executable* field click browse and find your .exe file (*...\SceneBuilder\SceneBuilder.exe*) and in *JavaFX 11+ SDK* field click browse and find your sdk folder (*...\javafx-sdk-11.0.2*).
 ___________________________________
 <a name="err"></a>
 ## Common errors
