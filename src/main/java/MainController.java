@@ -178,10 +178,20 @@ public class MainController implements Initializable {
             filterData = dataFromCSVFile;
         }
         else if(columnCheckbox.isSelected()){
+            try {
             filterData = CSVHandler.getByMultipleRow(rowsToFind,dataFromCSVFile);
+            }catch(IndexOutOfBoundsException e){
+                badAlert("Wpisz właściwy zakres!");
+                return;
+            }
         }
         else if(rowCheckbox.isSelected()){
+            try {
             filterData = CSVHandler.getByMultipleColumn(columnsToFind,dataFromCSVFile);
+            }catch(IndexOutOfBoundsException e){
+                badAlert("Wpisz właściwy zakres!");
+                return;
+            }
         }
     }
 
@@ -196,7 +206,10 @@ public class MainController implements Initializable {
     }
     public void saveFiles() throws FileNotFoundException {
         CSVHandler csvHandler = new CSVHandler();
-        csvHandler.saveToCSV(dataFromFileConcatenation,";","C:\\Users\\Radek\\Desktop\\6semestr\\DPP\\lab_3\\lab3\\src\\main\\resources\\icons\\output.csv");
+        FileChooser fx = new FileChooser();
+        File file = fx.showSaveDialog(Main.getPrimaryStage());
+        csvHandler.saveToCSV(dataFromFileConcatenation,";",file.getPath());
+        goodAlert("Zapisano do pliku " + file.getName());
         dataFromFileConcatenation.clear();
     }
 

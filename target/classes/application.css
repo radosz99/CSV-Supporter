@@ -49,6 +49,9 @@
     -fx-text-fill: rgba(255,240,229);
 }
 
+#allLbl {
+    -fx-font-size: 10;
+}
 .button{
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
