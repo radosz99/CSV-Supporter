@@ -21,7 +21,7 @@ Program made for university course *Good programming practices*.
 ### Technologies 
 
 ### Running
-
+Checkout on *aplikacj* branch and run *Main.java*
 ### Description
 <img src="https://i.imgur.com/zkRc4Yy.png" width="555" height="456" />
 
