@@ -23,7 +23,7 @@ Branches:
 * *maven* - maven repository for source code from *biblioteka*,
 * *aplikacj* - desktop application using *maven* branch.
 
-Proposed assessment - 5.0
+Proposed assessment - 4.5
 
 <a name="tech1"></a>
 ### Technologies 
