@@ -23,15 +23,13 @@
       <TextField fx:id="columnId" layoutX="177.0" layoutY="292.0" prefHeight="25.0" prefWidth="64.0" />
       <TextField fx:id="rowId" layoutX="177.0" layoutY="326.0" prefHeight="25.0" prefWidth="64.0" />
       <Button fx:id="saveFilesBtn" layoutX="101.0" layoutY="562.0" mnemonicParsing="false" onAction="#saveFiles" prefHeight="50.0" prefWidth="200.0" />
-      <Label fx:id="columnsAmountLbl" layoutX="533.0" layoutY="95.0" prefHeight="17.0" prefWidth="79.0" />
-      <Label fx:id="rowsAmountLbl" layoutX="533.0" layoutY="121.0" prefHeight="17.0" prefWidth="79.0" />
-      <Label fx:id="columnsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="420.0" layoutY="95.0" prefHeight="17.0" prefWidth="108.0" />
-      <Label fx:id="rowsAmountInfoLbl" alignment="CENTER_RIGHT" layoutX="419.0" layoutY="121.0" prefHeight="17.0" prefWidth="110.0" />
+      <Label fx:id="columnsAmountLbl" layoutX="508.0" layoutY="97.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="rowsAmountLbl" layoutX="508.0" layoutY="123.0" prefHeight="17.0" prefWidth="79.0" />
       <Label fx:id="separatorInfoLbl" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="129.0" prefHeight="17.0" prefWidth="104.0" />
       <Label fx:id="idColumnLbl" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="296.0" prefHeight="17.0" prefWidth="71.0" />
       <Label fx:id="idRowLbl" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="330.0" prefHeight="17.0" prefWidth="71.0" />
-      <Label fx:id="fileNameLbl" layoutX="533.0" layoutY="68.0" prefHeight="17.0" prefWidth="79.0" />
-      <Label fx:id="fileNameInfoLbl" alignment="CENTER_RIGHT" layoutX="420.0" layoutY="68.0" prefHeight="17.0" prefWidth="108.0" />
+      <Label fx:id="fileNameLbl" layoutX="508.0" layoutY="70.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="fileNameInfoLbl" alignment="CENTER_RIGHT" layoutX="421.0" layoutY="70.0" prefHeight="17.0" prefWidth="82.0" />
       <Label fx:id="filtrLbl" alignment="CENTER" layoutX="34.0" layoutY="225.0" prefHeight="33.0" prefWidth="328.0" />
       <Label fx:id="filtrInfoLbl" alignment="TOP_CENTER" layoutX="34.0" layoutY="259.0" prefHeight="17.0" prefWidth="328.0" />
       <Label fx:id="loadLbl" alignment="CENTER" layoutX="33.0" layoutY="23.0" prefHeight="33.0" prefWidth="328.0" />

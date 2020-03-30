@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ChoiceFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -52,8 +53,6 @@ public class MainController implements Initializable {
     @FXML private ComboBox <Locale> lang;
     @FXML private Label rowsAmountLbl = new Label();
     @FXML private Label columnsAmountLbl = new Label();
-    @FXML private Label rowsAmountInfoLbl = new Label();
-    @FXML private Label columnsAmountInfoLbl = new Label();
     @FXML private Label separatorInfoLbl = new Label();
     @FXML private Label separatorInfoLbl2 = new Label();
     @FXML private Label separatorInfoLbl3 = new Label();
@@ -68,7 +67,6 @@ public class MainController implements Initializable {
     @FXML private Label loadInfoLbl = new Label();
     @FXML private Label concatLbl = new Label();
     @FXML private Label concatInfoLbl = new Label();
-    @FXML private Label addFileInfoLbl = new Label();
     @FXML private Label allLbl = new Label();
     @FXML private Label timeLbl = new Label();
     @FXML private CheckBox columnCheckbox = new CheckBox();
@@ -89,15 +87,19 @@ public class MainController implements Initializable {
             return createListCell();
         });
         lang.setButtonCell(createListCell());
+
+        localizedBinding = new LocalizedBinding("bundles", Locale.getDefault());
+        localizedBinding.localeProperty().bind(lang.valueProperty());
+
         lang.getSelectionModel().select(Locale.getDefault());
         lang.setOnAction(lv -> {
             updateDateAndFlag();
         });
         setCellFactory();
         updateDateAndFlag();
-
+        sources = resourceBundle;
         allData.setEditable(false);
-        Main.getPrimaryStage().setTitle("Obsługa plików CSV");
+        Main.getPrimaryStage().titleProperty().bind(localizedBinding.createStringBinding("title"));
         showDataBtn.setOnAction(e->{
             if(fileName!="") {
                 showDataInTextArea(dataFromCSVFile);
@@ -184,6 +186,7 @@ public class MainController implements Initializable {
         if(checkIfCSV(selectedFile)){
             dataFromFile = CSVHandler.parseCSV(selectedFile, separator);
             goodAlert("Wczytanie pliku powiodło się!");
+
         }
         else{
             badAlert("Wybierz plik CSV!");
@@ -197,20 +200,56 @@ public class MainController implements Initializable {
         warningAlert("Zresetowano " + filesToConcat + " plików.");
         dataFromFileConcatenation.clear();
         filesToConcat=0;
-
     }
+
+    public void choiceFormatter(int rows, int columns) {
+        System.out.println("Wiersz " + rows);
+        System.out.println("Kolumna " + columns);
+        String help = String.valueOf(rows);
+        int rowsAmount = Integer.parseInt(getTwoLastDigits(help));
+        System.out.println("Przek wiersze " + rowsAmount);
+        String s = localizedBinding.getString("rows");
+        ChoiceFormat fmt = new ChoiceFormat(s);
+        rowsAmountLbl.setText(rows + " "+ fmt.format(rowsAmount));
+
+        help = String.valueOf(columns);
+        int columnsAmount = Integer.parseInt(getTwoLastDigits(help));
+        System.out.println("Przek kolumny} " + columnsAmount);
+        s = localizedBinding.getString("columns");
+        fmt = new ChoiceFormat(s);
+        columnsAmountLbl.setText(columns + " "+ fmt.format(columnsAmount));
+    }
+
     public void loadData() throws IOException {
         if(textFieldSeparator.getText().equals("")){
             badAlert("Wpisz separator!");
             return;
         }
         dataFromCSVFile = getDataFromFile(dataFromCSVFile,textFieldSeparator.getText());
-
+        if(!dataFromCSVFile.isEmpty()){
+            fileNameLbl.setText(fileName);
+        }
         if(dataFromCSVFile.get(0).size()==1){
             warningAlert("Jedna kolumna danych czy zły separator? (sprawdź naciskając na Pokaż wczytany plik)");
         }
-        columnsAmountLbl.setText(Integer.toString(dataFromCSVFile.get(0).size()));
-        rowsAmountLbl.setText(Integer.toString(dataFromCSVFile.size()));
+        choiceFormatter(dataFromCSVFile.size(), dataFromCSVFile.get(0).size());
+    }
+
+    private String getTwoLastDigits(String help){
+        char[] ch = new char[help.length()];
+        for (int i = 0; i < help.length(); i++) {
+            ch[i] = help.charAt(i);
+        }
+
+        while(help.length()>2) {
+            char[] helpCh = new char[help.length()-1];
+            for(int i=0; i<help.length()-1;i++) {
+                ch[i]=ch[i+1];
+                helpCh[i]=ch[i+1];
+            }
+            help = new String(helpCh);
+        }
+        return help;
     }
 
     public void showDataInTextArea(ArrayList<ArrayList<String>> dataToShow){
@@ -224,11 +263,11 @@ public class MainController implements Initializable {
         allData.setText(allDataString);
     }
 
-    public void hideDataInTextArea(){
-        allData.setText("");
-    }
-
     public void saveFilterData() throws FileNotFoundException {
+        if(textFieldSeparator3.getText().equals("")){
+            badAlert("Wpisz separator!");
+            return;
+        }
         if(!filterData.isEmpty()) {
             CSVHandler csvHandler = new CSVHandler();
             FileChooser fx = new FileChooser();
@@ -334,8 +373,10 @@ public class MainController implements Initializable {
         dataForConcatenation=null;
         dataForConcatenation = getDataFromFile(dataForConcatenation,textFieldSeparator2.getText());
         if(dataForConcatenation!=null) {
-            CSVHandler.concatenateCSV(dataFromFileConcatenation, dataForConcatenation);
             filesToConcat++;
+            goodAlert("To już " + filesToConcat + " plik");
+            CSVHandler.concatenateCSV(dataFromFileConcatenation, dataForConcatenation);
+
         }
 
     }
@@ -349,37 +390,35 @@ public class MainController implements Initializable {
         if(!parts[parts.length-1].contentEquals("csv")) {
             return false;
         }
+        fileNameLbl.textProperty().unbind();
         fileName = file.getName();
-        fileNameLbl.setText(file.getName());
         return true;
     }
 
     private void setLabels(){
-        loadDataBtn.setText("Wczytaj plik CSV");
-        showDataBtn.setText("Pokaż wczytany plik");
-        saveFilterDataInfo.setText("Zapisz przefiltrowane dane");
-        filterBtn.setText("Filtruj!");
-        rowsAmountInfoLbl.setText("Liczba wierszy: ");
-        columnsAmountInfoLbl.setText("Liczba kolumn: ");
+        loadDataBtn.textProperty().bind(localizedBinding.createStringBinding("loadDataBtn"));
+        showDataBtn.textProperty().bind(localizedBinding.createStringBinding("showDataBtn"));
+        saveFilterDataInfo.textProperty().bind(localizedBinding.createStringBinding("saveFilterDataInfo"));
+        filterBtn.textProperty().bind(localizedBinding.createStringBinding("filterBtn"));
         separatorInfoLbl.setText("Separator: ");
         separatorInfoLbl2.setText("Separator: ");
         separatorInfoLbl3.setText("Separator: ");
-        fileNameInfoLbl.setText("Nazwa pliku: ");
-        idRowLbl.setText("Id wierszy: ");
-        idColumnLbl.setText("Id kolumn: ");
-        filtrLbl.setText("Filtrowanie kolumn i wierszy");
-        filtrInfoLbl.setText("Wpisz id separując znakiem ;");
-        loadLbl.setText("Wczytywanie pliku CSV");
-        loadInfoLbl.setText("Wybierz plik wpisując uprzednio separator");
-        saveFilterDataBtn.setText("Zapisz do pliku CSV");
-        saveFilesBtn.setText("Zapisz do pliku CSV");
-        concatLbl.setText("Konkatenacja plików CSV");
-        concatInfoLbl.setText("Łączenie plików w jeden wynikowy");
-        addFileInfoLbl.setText("<-- dodaj");
-        addFileBtn.setText("Dodaj");
-        resetBtn.setText("Resetuj");
-        allLbl.setText("Wszystkie?");
-        countryLbl.setText("Kraj:");
+        fileNameInfoLbl.textProperty().bind(localizedBinding.createStringBinding("fileNameInfoLbl"));
+        idRowLbl.textProperty().bind(localizedBinding.createStringBinding("idRowLbl"));
+        idColumnLbl.textProperty().bind(localizedBinding.createStringBinding("idColumnLbl"));
+        fileNameLbl.textProperty().bind(localizedBinding.createStringBinding("fileNameLbl"));
+        filtrLbl.textProperty().bind(localizedBinding.createStringBinding("filtrLbl"));
+        filtrInfoLbl.textProperty().bind(localizedBinding.createStringBinding("filtrInfoLbl"));
+        loadLbl.textProperty().bind(localizedBinding.createStringBinding("loadLbl"));
+        loadInfoLbl.textProperty().bind(localizedBinding.createStringBinding("loadInfoLbl"));
+        saveFilterDataBtn.textProperty().bind(localizedBinding.createStringBinding("saveFilterDataBtn"));
+        saveFilesBtn.textProperty().bind(localizedBinding.createStringBinding("saveFilterDataBtn"));
+        concatLbl.textProperty().bind(localizedBinding.createStringBinding("concatLbl"));
+        concatInfoLbl.textProperty().bind(localizedBinding.createStringBinding("concatInfoLbl"));
+        addFileBtn.textProperty().bind(localizedBinding.createStringBinding("addFileBtn"));
+        resetBtn.textProperty().bind(localizedBinding.createStringBinding("resetBtn"));
+        allLbl.textProperty().bind(localizedBinding.createStringBinding("allLbl"));
+        countryLbl.textProperty().bind(localizedBinding.createStringBinding("countryLbl"));
     }
 
     /**
@@ -426,6 +465,11 @@ public class MainController implements Initializable {
         clock.play();
         Image i = new Image(new File("C:\\Users\\Radek\\Desktop\\6semestr\\DPP\\lab_3\\lab3\\src\\main\\resources\\icons\\"+Locale.getDefault().getCountry().toString()+ ".png").toURI().toString());
         imageviewFlag.setImage(i);
+        try {
+            choiceFormatter(dataFromCSVFile.size(), dataFromCSVFile.get(0).size());
+        } catch (IndexOutOfBoundsException e){
+
+        }
 
 
     }

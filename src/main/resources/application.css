@@ -41,6 +41,9 @@
     -fx-text-fill: rgba(255,240,229);
 }
 
+#fileNameLbl{
+    -fx-text-fill: red;
+}
 #saveFilterDataInfo{
     -fx-font-size: 18;
     -fx-text-fill: rgba(255,240,229);

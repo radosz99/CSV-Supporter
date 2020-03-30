@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class Main extends Application {
 
@@ -28,10 +29,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            //ResourceBundle bundle = ResourceBundle.getBundle("resources.bundles");
+            ResourceBundle bundle = ResourceBundle.getBundle("bundles");
             loader = new FXMLLoader(this.getClass().getResource("Main.fxml"));
             stage = primaryStage;
-            //loader.setResources(bundle);
+            loader.setResources(bundle);
             Parent root = loader.load();
             Scene scene = new Scene(root,860,645);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
