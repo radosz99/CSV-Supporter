@@ -226,8 +226,11 @@ public class MainController implements Initializable {
             return;
         }
         dataFromCSVFile = getDataFromFile(dataFromCSVFile,textFieldSeparator.getText());
-        if(!dataFromCSVFile.isEmpty()){
+        if(!dataFromCSVFile.isEmpty()) {
             fileNameLbl.setText(fileName);
+        }
+        else{
+            return;
         }
         if(dataFromCSVFile.get(0).size()==1){
             warningAlert("Jedna kolumna danych czy zły separator? (sprawdź naciskając na Pokaż wczytany plik)");
