@@ -1,0 +1,82 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+    -fx-background-color : rgba(10, 10, 10, .89);
+}
+
+.text-area *.text {
+    -fx-text-alignment: center;
+}
+
+#allData{
+    -fx-background-color : rgba(35,35,35);
+    -fx-effect: dropshadow(gaussian, lightslategray  , 10.0, 0.5, 0.0, 0.0);
+}
+
+
+#filtrLbl {
+    -fx-font-size: 18;
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#loadLbl {
+    -fx-font-size: 18;
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#loadInfoLbl {
+    -fx-font-size: 10;
+    -fx-text-fill: rgba(255,240,229);
+}
+#filtrInfoLbl {
+    -fx-font-size: 10;
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#addFileInfoLbl{
+    -fx-font-size: 10;
+    -fx-text-fill: rgba(255,240,229);
+}
+#concatLbl {
+    -fx-font-size: 18;
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#fileNameLbl{
+    -fx-text-fill: red;
+}
+#saveFilterDataInfo{
+    -fx-font-size: 18;
+    -fx-text-fill: rgba(255,240,229);
+}
+#concatInfoLbl {
+    -fx-font-size: 10;
+    -fx-text-fill: rgba(255,240,229);
+}
+
+.label {
+    -fx-text-fill: rgba(255,240,229);
+}
+
+#allLbl {
+    -fx-font-size: 10;
+}
+.button{
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color : rgba(35,35,35);
+    -fx-effect: dropshadow(gaussian, white  , 7.0, 0.3, 0.0, 0.0);
+    -fx-text-fill: rgba(255,240,229);
+    -fx-font-weight: bolder;
+}
+
+#column1{
+    -fx-font-family: monospace;
+    -fx-font-size: 12;
+    -fx-text-fill: rgba(35,35,35);
+    -fx-font-weight: bolder;
+}
+
+.text-field{
+    -fx-text-fill: blue;
+    -fx-effect: dropshadow(gaussian, lightslategray  , 10.0, 0.5, 0.0, 0.0);
+}

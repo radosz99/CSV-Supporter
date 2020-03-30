@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="645.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="34.0" layoutY="225.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="34.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="34.0" layoutY="424.0" stroke="BLACK" strokeType="INSIDE" width="328.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="142.0" layoutX="596.0" layoutY="12.0" stroke="BLACK" strokeType="INSIDE" width="249.0" />
+      <Button fx:id="loadDataBtn" layoutX="103.0" layoutY="165.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" />
+      <TextArea fx:id="allData" layoutX="419.0" layoutY="154.0" prefHeight="402.0" prefWidth="426.0" />
+      <Button fx:id="showDataBtn" layoutX="423.0" layoutY="13.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="169.0" />
+      <TextField fx:id="textFieldSeparator" layoutX="242.0" layoutY="126.0" prefHeight="25.0" prefWidth="60.0" />
+      <TextField fx:id="columnId" layoutX="177.0" layoutY="292.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="rowId" layoutX="177.0" layoutY="326.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button fx:id="saveFilesBtn" layoutX="101.0" layoutY="562.0" mnemonicParsing="false" onAction="#saveFiles" prefHeight="50.0" prefWidth="200.0" />
+      <Label fx:id="columnsAmountLbl" layoutX="508.0" layoutY="97.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="rowsAmountLbl" layoutX="508.0" layoutY="123.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="separatorInfoLbl" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="129.0" prefHeight="17.0" prefWidth="104.0" />
+      <Label fx:id="idColumnLbl" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="296.0" prefHeight="17.0" prefWidth="71.0" />
+      <Label fx:id="idRowLbl" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="330.0" prefHeight="17.0" prefWidth="71.0" />
+      <Label fx:id="fileNameLbl" layoutX="508.0" layoutY="70.0" prefHeight="17.0" prefWidth="79.0" />
+      <Label fx:id="fileNameInfoLbl" alignment="CENTER_RIGHT" layoutX="421.0" layoutY="70.0" prefHeight="17.0" prefWidth="82.0" />
+      <Label fx:id="filtrLbl" alignment="CENTER" layoutX="34.0" layoutY="225.0" prefHeight="33.0" prefWidth="328.0" />
+      <Label fx:id="filtrInfoLbl" alignment="TOP_CENTER" layoutX="34.0" layoutY="259.0" prefHeight="17.0" prefWidth="328.0" />
+      <Label fx:id="loadLbl" alignment="CENTER" layoutX="33.0" layoutY="23.0" prefHeight="33.0" prefWidth="328.0" />
+      <Label fx:id="loadInfoLbl" alignment="TOP_CENTER" layoutX="33.0" layoutY="62.0" prefHeight="17.0" prefWidth="328.0" />
+      <Button fx:id="saveFilterDataBtn" layoutX="645.0" layoutY="105.0" mnemonicParsing="false" onAction="#saveFilterData" prefHeight="33.0" prefWidth="155.0" />
+      <Button fx:id="filterBtn" layoutX="100.0" layoutY="360.0" mnemonicParsing="false" onAction="#filterData" prefHeight="50.0" prefWidth="200.0" />
+      <Label fx:id="concatLbl" alignment="CENTER" layoutX="35.0" layoutY="426.0" prefHeight="33.0" prefWidth="328.0" />
+      <Label fx:id="concatInfoLbl" alignment="TOP_CENTER" layoutX="35.0" layoutY="460.0" prefHeight="17.0" prefWidth="328.0" />
+      <Button fx:id="addFileBtn" layoutX="101.0" layoutY="522.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" />
+      <Button fx:id="resetBtn" layoutX="206.0" layoutY="522.0" mnemonicParsing="false" onAction="#resetConcatenation" prefHeight="25.0" prefWidth="95.0" />
+      <TextField fx:id="textFieldSeparator2" layoutX="241.0" layoutY="488.0" prefHeight="25.0" prefWidth="60.0" />
+      <Label fx:id="separatorInfoLbl2" alignment="CENTER_RIGHT" layoutX="131.0" layoutY="491.0" prefHeight="17.0" prefWidth="104.0" />
+      <CheckBox fx:id="columnCheckbox" layoutX="261.0" layoutY="296.0" mnemonicParsing="false" />
+      <CheckBox fx:id="rowCheckbox" layoutX="261.0" layoutY="330.0" mnemonicParsing="false" />
+      <Label fx:id="allLbl" alignment="CENTER" layoutX="242.0" layoutY="272.0" prefHeight="17.0" prefWidth="54.0" />
+      <TextField fx:id="textFieldSeparator3" layoutX="744.0" layoutY="73.0" prefHeight="25.0" prefWidth="56.0" />
+      <Label fx:id="separatorInfoLbl3" alignment="CENTER_RIGHT" layoutX="645.0" layoutY="77.0" prefHeight="17.0" prefWidth="96.0" />
+      <Label fx:id="timeLbl" alignment="CENTER_RIGHT" layoutX="618.0" layoutY="586.0" prefHeight="17.0" prefWidth="158.0" />
+      <ImageView fx:id="imageviewFlag" fitHeight="23.0" fitWidth="37.0" layoutX="784.0" layoutY="584.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="lang" layoutX="420.0" layoutY="582.0" prefWidth="150.0" />
+      <Label fx:id="countryLbl" layoutX="421.0" layoutY="562.0" prefHeight="17.0" prefWidth="149.0" />
+      <Label fx:id="saveFilterDataInfo" alignment="CENTER" layoutX="595.0" layoutY="11.0" prefHeight="33.0" prefWidth="249.0" />
+   </children>
+</AnchorPane>
