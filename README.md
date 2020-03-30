@@ -30,7 +30,7 @@ Branches:
 * Maven.
 
 ### Running
-Checkout on *aplikacj* branch and run *Main.java*
+Checkout on *master* branch and run *Main.java*
 ### Description
 Program gives 4 main functionalities:
 1.  Loading CSV files and display data from them on the text area.
